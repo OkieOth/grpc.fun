@@ -1,0 +1,66 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+        "guid": {
+            "type": "string",
+            "format": "uuid"
+        },
+        "date": {
+            "type": "string",
+            "format": "date"
+        },
+        "timestamp": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "time": {
+            "type": "string",
+            "format": "time"
+        },
+        "enumValue": {
+            "type": "string",
+            "enum": [
+                "option1",
+                "option2",
+                "option3"
+            ]
+        },
+        "arrayValue": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "complex": {
+            "$ref": "#definitions/SubType"
+        }
+    },
+    "required": [
+        "guid",
+        "date",
+        "enumValue",
+        "arrayValue"
+    ],
+    "definitions": {
+        "SubType": {
+            "type": "object",
+            "properties": {
+                "stringValue": {
+                    "type": "string"
+                },
+                "intValue": {
+                    "type": "integer"
+                },
+                "floatValue": {
+                    "type": "number"
+                }
+            },
+            "required": [
+                "stringValue",
+                "intValue",
+                "floatValue"
+            ]
+        }
+    }
+}

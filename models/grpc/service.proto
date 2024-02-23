@@ -1,0 +1,52 @@
+syntax = "proto3";
+
+// Define message for the SubType
+message SubType {
+  string string_value = 1;
+  int32 int_value = 2;
+  float float_value = 3;
+}
+
+// Define message for the object
+message Object {
+  string guid = 1;
+  string date = 2;
+  string timestamp = 3;
+  string time = 4;
+  string enum_value = 5;
+  repeated string array_value = 6;
+  SubType complex = 7;
+}
+
+// Define service for CRUD operations
+service ObjectService {
+  // Create operation
+  rpc CreateObject(Object) returns (Object) {}
+
+  // Read operation
+  rpc ReadObjectById (ReadObjectRequest) returns (Object) {}
+  
+  // Update operation
+  rpc UpdateObject(Object) returns (Object) {}
+  
+  // Delete operation
+  rpc DeleteObject(DeleteObjectRequest) returns (Object) {}
+
+  // Read a list of objects in a stream
+  rpc ListObjects(ListObjectsRequest) returns (stream Object) {}
+}
+
+// Define request message for reading an object by ID
+message ReadObjectRequest {
+  string id = 1;
+}
+
+// Define request message for deleting an object by ID
+message DeleteObjectRequest {
+  string id = 1;
+}
+
+// Define request message for listing objects
+message ListObjectsRequest {
+  // You can add fields to the request message if needed
+}
