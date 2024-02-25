@@ -1,10 +1,13 @@
 syntax = "proto3";
 
+package grpc_fun; 
+
+
 // Define message for the SubType
 message SubType {
-  string string_value = 1;
+  optional string string_value = 1;
   int32 int_value = 2;
-  float float_value = 3;
+  optional float float_value = 3;
 }
 
 // Define message for the object
@@ -15,7 +18,7 @@ message Object {
   string time = 4;
   string enum_value = 5;
   repeated string array_value = 6;
-  SubType complex = 7;
+  optional SubType complex = 7;
 }
 
 // Define service for CRUD operations
