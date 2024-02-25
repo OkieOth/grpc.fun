@@ -1,4 +1,4 @@
-module grpc.go.fun
+module github.com/OkieOth/grpc.fun/grpc.go.fun
 
 go 1.21.6
 

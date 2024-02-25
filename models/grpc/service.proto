@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package grpc_fun; 
+package grpc_test; 
 
 
 // Define message for the SubType
