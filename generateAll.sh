@@ -12,6 +12,8 @@ yacgVersion=6.3.0
 #     exit 1
 # fi
 
+
+
 # generate golang code
 # Install go plugins
 protoc --proto_path=./models/grpc --go_out=./golang/generated/pkg/proto_defs \

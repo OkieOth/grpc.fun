@@ -22,8 +22,14 @@ export PATH="$PATH:$(go env GOPATH)/bin"
 
 
 
-protoc --proto_path=../models/grpc -I=. --go_out=. --go_opt=Mservice.proto=.grpc_test --experimental_allow_proto3_optional ../models/grpc/service.proto
+# specify always all proto files you want to use for codegen
+protoc --proto_path=./models/grpc --go_out=./golang/generated/pkg/proto_defs \
+    --go-grpc_out=./golang/generated/pkg/proto_defs \
+    --experimental_allow_proto3_optional \
+        ../models/grpc/service.proto \
+        ../models/grpc/generated/types.proto
 
 # load dependencies in the project
 go get google.golang.org/grpc
+go get google.golang.org/genproto/...
 ```
