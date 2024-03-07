@@ -1,0 +1,52 @@
+/* Attention, this file is generated. Manual changes get lost with the next
+* run of the code generation.
+* created by yacg (template: protobuf.mako v1.0.0) */
+
+syntax = "proto3";
+
+package grpc_test;
+
+import "google/protobuf/timestamp.proto";
+import "google/type/date.proto";
+import "google/type/timeofday.proto";
+
+option go_package="./grpc_test";
+
+
+message DummyType {
+    
+        string guid = 1;
+
+        google.type.Date date = 2;
+
+        google.protobuf.Timestamp timestamp = 3;
+
+        google.type.TimeOfDay time = 4;
+
+        DummyTypeEnumValueEnum enumValue = 5;
+
+        repeated string arrayValue = 6;
+
+        SubType complex = 7;
+
+}
+
+
+enum DummyTypeEnumValueEnum {
+    OPTION1 = 0;
+    OPTION2 = 1;
+    OPTION3 = 2;
+}
+
+
+message SubType {
+    
+        string stringValue = 1;
+
+        int32 intValue = 2;
+
+        double floatValue = 3;
+
+}
+
+

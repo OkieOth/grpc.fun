@@ -1,5 +1,6 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "DummyType",
     "type": "object",
     "properties": {
         "guid": {
@@ -33,7 +34,7 @@
             }
         },
         "complex": {
-            "$ref": "#definitions/SubType"
+            "$ref": "#/definitions/SubType"
         }
     },
     "required": [

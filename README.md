@@ -14,3 +14,6 @@ Some gRPC examples
 apt install -y protobuf-compiler
 protoc --version
 ```
+
+# Trouble Points
+1. If your protoc run doesn't compile the types of imports, look here https://stackoverflow.com/questions/66119322/how-do-i-only-generate-protobuf-messages-for-the-import-path
