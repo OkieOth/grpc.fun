@@ -2,54 +2,43 @@ syntax = "proto3";
 
 package grpc_test; 
 
+import "generated/types.proto";
 
-// Define message for the SubType
-message SubType {
-  optional string string_value = 1;
-  int32 int_value = 2;
-  optional float float_value = 3;
-}
 
-// Define message for the object
-message Object {
-  string guid = 1;
-  string date = 2;
-  string timestamp = 3;
-  string time = 4;
-  string enum_value = 5;
-  repeated string array_value = 6;
-  optional SubType complex = 7;
-}
+option go_package="./grpc_test";
+
+
 
 // Define service for CRUD operations
-service ObjectService {
+service DummyService {
   // Create operation
-  rpc CreateObject(Object) returns (Object) {}
+  rpc CreateObject(grpc_test.DummyType) returns (grpc_test.DummyType) {}
 
   // Read operation
-  rpc ReadObjectById (ReadObjectRequest) returns (Object) {}
+  rpc ReadObjectById (ReadDummyRequest) returns (grpc_test.DummyType) {}
   
   // Update operation
-  rpc UpdateObject(Object) returns (Object) {}
+  rpc UpdateObject(grpc_test.DummyType) returns (grpc_test.DummyType) {}
   
   // Delete operation
-  rpc DeleteObject(DeleteObjectRequest) returns (Object) {}
+  rpc DeleteObject(DeleteDummyRequest) returns (grpc_test.DummyType) {}
 
   // Read a list of objects in a stream
-  rpc ListObjects(ListObjectsRequest) returns (stream Object) {}
+  rpc ListObjects(ListDummiesRequest) returns (stream grpc_test.DummyType) {}
 }
 
 // Define request message for reading an object by ID
-message ReadObjectRequest {
+message ReadDummyRequest {
   string id = 1;
 }
 
 // Define request message for deleting an object by ID
-message DeleteObjectRequest {
+message DeleteDummyRequest {
   string id = 1;
 }
 
 // Define request message for listing objects
-message ListObjectsRequest {
-  // You can add fields to the request message if needed
+message ListDummiesRequest {
+  int32 start = 1;
+  int32 limit = 2;
 }

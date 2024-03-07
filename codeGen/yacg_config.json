@@ -1,0 +1,55 @@
+[
+    {
+        "name": "main",
+        "description": "code gen configuration for the business types",
+        "models": [ {
+            "schema": "/project/models/json/types.json"
+            }
+        ],
+        "tasks": [
+            {
+                "name": "golang types",
+                "singleFileTask": {
+                    "template": "/project/codeGen/templates/golang_types.mako",
+                    "destFile": "/project/golang/generated/pkg/types/types.go",
+                    "templateParams": [
+                        {
+                          "name": "modelPackage",
+                          "value": "types"
+                        }
+                    ]
+                }
+            },
+            {
+                "name": "types_tests",
+                "singleFileTask": {
+                    "template": "/project/codeGen/templates/golang_types_tests.mako",
+                    "destFile": "/project/golang/generated/pkg/types/types_test.go",
+                    "templateParams": [
+                        {
+                          "name": "modelPackage",
+                          "value": "types"
+                        }
+                    ]
+                }
+            },
+            {
+                "name": "protobuf",
+                "singleFileTask": {
+                    "template": "/project/codeGen/templates/protobuf.mako",
+                    "destFile": "/project/models/grpc/generated/types.proto",
+                    "templateParams": [
+                        {
+                          "name": "goPackage",
+                          "value": "types"
+                        },
+                        {
+                            "name": "packageName",
+                            "value": "grpc_test"
+                          }
+                      ]
+                }
+            }
+        ]
+    }
+]
